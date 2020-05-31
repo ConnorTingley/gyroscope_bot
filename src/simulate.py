@@ -16,4 +16,13 @@ class state:
         self.H = np.empty([3])
 
     def simulate_step(self, dt):
-        alpha =
+
+
+
+
+
+
+
+
+
+
