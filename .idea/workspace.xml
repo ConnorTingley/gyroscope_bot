@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb4e5f7-4fae-41f5-9002-fd56f2631aa7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Network Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/network.py" beforeDir="false" />
-    </list>
+    <list default="true" id="3eb4e5f7-4fae-41f5-9002-fd56f2631aa7" name="Default Changelist" comment="Completed Backpropagation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,6 +107,14 @@
       <option name="presentableId" value="Default" />
       <updated>1590022737403</updated>
     </task>
+    <task id="LOCAL-00001" summary="Completed Backpropagation">
+      <created>1590908986119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1590908986119</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,23 +128,27 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Completed Backpropagation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Completed Backpropagation" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1590908747159">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908747159" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1590908747159">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908747159" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1590908747159">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908747159" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1590908747159">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908747159" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
     <state x="461" y="165" key="SettingsEditor" timestamp="1590903569298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

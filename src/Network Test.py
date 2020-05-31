@@ -28,7 +28,7 @@ def plot_points(x, y, save_path):
 if __name__ == "__main__":
     mind = deep_network([2, 4, 1])
     n = 10000
-    alpha = 1e-2
+    alpha = 5e-2
     x, y = generate_set(n)
     loss_change = 1234
     last_loss = 1234
