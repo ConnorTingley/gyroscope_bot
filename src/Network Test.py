@@ -27,6 +27,7 @@ def plot_points(x, y, save_path):
 
 if __name__ == "__main__":
     mind = deep_network([2, 4, 1])
+    print(mind.W)
     n = 10000
     alpha = 5e-2
     x, y = generate_set(n)
@@ -39,10 +40,13 @@ if __name__ == "__main__":
             d_output = pred - y[i]
             loss += 0.5 * np.square(d_output)
             mind.backpropagate(d_output, alpha)
+            mind.update()
         loss /= n
         loss_change = loss - last_loss
         last_loss = loss
         print(loss)
+
+    print(mind.W)
 
     n_test = 1000
     x_test, y_test = generate_set(n_test)
