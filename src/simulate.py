@@ -11,13 +11,15 @@ class state:
 
     #state variables
     t = 0
+    event_num = 0
+    event_end = 0
+    cur_event = []
     angle = np.zeros(3) #represented as theta, phi, alpha (note: theta doesn't actually matter--symmetry yo)
     angle_vel = np.zeros(3) #theta_dot, phi_dot, alpha_dot
     wheel_l = np.zeros(3) #momentum in flywheels
 
     #for backprop
     t_overshoot = []
-
 
 
     events = []
@@ -33,6 +35,9 @@ class state:
         self.angle_vel = [0,0,0]
         self.wheel_l = [0,0,0]
         self.t = 0
+        event_num = 0
+        cur_event = events[0]
+        event_end = cur_event[0] + max(cur_event[3])
 
         #events which will occur
         self.events = events
@@ -40,6 +45,7 @@ class state:
 
 
     def rough_step(self, dt, T_action, count):
+        torque_overshoot = np.zeros(3)
         for i in range(count):
             # convert momentum space command to wheel command
             wheel_action = np.zeros(3)
@@ -52,7 +58,7 @@ class state:
             upper_torque_lim = self.max_torque * (np.ones(3) - self.wheel_l / self.satr_l)
             lower_torque_lim = -self.max_torque * (np.ones(3) + self.wheel_l / self.satr_l)
             wheel_action_clipped = np.clip(wheel_action, lower_torque_lim, upper_torque_lim)
-            torque_overshoot = wheel_action - wheel_action_clipped
+            torque_overshoot += wheel_action - wheel_action_clipped
             self.wheel_l += wheel_action_clipped * dt
 
             #compute angular accelerations from wheels
@@ -61,6 +67,16 @@ class state:
             a[1] += self.ag * np.sin(self.angle[1])
 
             #determine accelerations from events
+            T_inc = (self.t - self.cur_event[0]) * self.self.cur_event[2]
+            T_steady = self.cur_event[1]
+            T_dec = (self.cur_event[0] + self.events[self.event_num][3] - self.t) * self.events[self.event_num][2]
+            a += [max(0, min(*l)) for l in zip(T_inc, T_steady, T_dec)] / self.I
+
+            #check if we have concluded this event
+            if self.t > self.event_end:
+                self.event_num += 1
+                self.cur_event = self.events[self.event_num]
+                self.event_end = self.cur_event[0] + max(self.cur_event[3])
 
             #velocity updates
             self.angle_vel[0] = (1 + 2 * self.angle_vel[1] * dt / np.tan(self.angle[1])) * self.angle_vel[0] \
@@ -79,8 +95,12 @@ class state:
                 self.angle[2] = -self.angle[2]
 
             self.t += dt
+        torque_overshoot = torque_overshoot/count
+        self.t_overshoot.append(torque_overshoot)
+        return [self.angle[1:2], self.angle_vel, self.wheel_l/ self.satr_l]
 
     def precise_step(self, dt, action):
+        return 3
 
 
 

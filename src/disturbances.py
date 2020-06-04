@@ -15,8 +15,8 @@ class disturbance:
         self.jerk = [jerk_mean - jerk_spread/2, jerk_mean, jerk_mean + jerk_spread/2]
         max_impulse = max
 
-    def generate_events(self, sim_len):
-        t = 0
+    def generate_events(self, start_time, sim_len):
+        t = start_time
         count = 0
         impulse = np.inf
         delta_t = 0
@@ -30,13 +30,15 @@ class disturbance:
             while impulse > self.max_impulse:
                 fs = random.normal(self.mus[2], self.sigmas[2], 3)
                 durs = random.normal(self.mus[1], self.sigmas[1], 3)
+                durs = np.clip(durs, a_min = 0, a_max = None)
                 js = random.triangular(self.jerk[0], self.jerk[1], self.jerk[2], 3)
                 prev_max_time = np.max(durs + 2 * np.divide(fs, js))
                 impulse = fs.dot(durs)
             t += delta_t
             events.append([t, fs, js, durs])
             impulse = np.inf
-        #print(events)
+        for i in range(len(events)):
+            print(i, events[i][0])
         return events
 
     def plot_events(self, events, dt):
