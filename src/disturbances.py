@@ -37,8 +37,8 @@ class disturbance:
             t += delta_t
             events.append([t, fs, js, durs])
             impulse = np.inf
-        for i in range(len(events)):
-            print(i, events[i][0])
+        #for i in range(len(events)):
+        #    print(i, events[i][0])
         return events
 
     def plot_events(self, events, dt):
@@ -70,7 +70,6 @@ class disturbance:
             t_arr.extend(np.arange(0, max_added) * dt + new_t)
             t = t_arr[len(t_arr) - 1]
             count += 1
-        print(f_arr)
         plt.plot(t_arr, f_arr[0], label = "f_x")
         plt.plot(t_arr, f_arr[1], label = "f_y")
         plt.plot(t_arr, f_arr[2], label = "f_z")
