@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+  <component name="ChangeListManager">
+    <list default="true" id="e2d46387-eff1-404d-ad25-ea347a20640c" name="Default Changelist" comment="" />
+=======
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -19,9 +23,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3eb4e5f7-4fae-41f5-9002-fd56f2631aa7" name="Default Changelist" comment="Completed Backpropagation">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3eb4e5f7-4fae-41f5-9002-fd56f2631aa7" name="Default Changelist" comment="Completed Backpropagation" />
+>>>>>>> a14c75f26fa94490ea6910d12f9fcbf923868281
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,8 +40,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
+  <component name="ProjectId" id="1cYOylnUi28ZN4JLEOeAparuckU" />
+=======
   <component name="ProjectId" id="1cCBXrcNfdR0ofvcTt4nHxYZa8u" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+>>>>>>> a14c75f26fa94490ea6910d12f9fcbf923868281
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,19 +53,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+<<<<<<< HEAD
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="gyro_bot" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+=======
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\Documents\CS229\gyroscope_bot\src\old" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Documents\CS229\gyroscope_bot\src" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Python.cont_actor_critic">
+  <component name="RunManager" selected="Python.Network Test">
     <configuration name="Network Test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+>>>>>>> a14c75f26fa94490ea6910d12f9fcbf923868281
       <module name="gyroscope_bot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -70,7 +75,10 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Documents\CS229\gyroscope_bot\src\old\Network Test.py" />
+<<<<<<< HEAD
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/gyro_bot.py" />
+=======
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/Network Test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -79,7 +87,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Network_Test_Simple" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="network" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="gyroscope_bot" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -91,70 +99,8 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Documents\CS229\gyroscope_bot\src\old\Network_Test_Simple.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="actor_critic_test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="gyroscope_bot" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Documents\CS229\gyroscope_bot\src\old\actor_critic_test.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="actor_critic_tf" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="gyroscope_bot" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Documents\CS229\gyroscope_bot\src\old\actor_critic_tf.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="cont_actor_critic" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="gyroscope_bot" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/cont_actor_critic.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/network.py" />
+>>>>>>> a14c75f26fa94490ea6910d12f9fcbf923868281
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -165,11 +111,12 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.cont_actor_critic" />
-        <item itemvalue="Python.actor_critic_tf" />
-        <item itemvalue="Python.actor_critic_test" />
+<<<<<<< HEAD
+        <item itemvalue="Python.gyro_bot" />
+=======
         <item itemvalue="Python.Network Test" />
-        <item itemvalue="Python.Network_Test_Simple" />
+        <item itemvalue="Python.network" />
+>>>>>>> a14c75f26fa94490ea6910d12f9fcbf923868281
       </list>
     </recent_temporary>
   </component>
@@ -178,6 +125,37 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
+<<<<<<< HEAD
+      <changelist id="e2d46387-eff1-404d-ad25-ea347a20640c" name="Default Changelist" comment="" />
+      <created>1590702316898</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590702316898</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1590710722967">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1590710722967" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center" timestamp="1590710722967">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1590710722967" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left" timestamp="1590710722967">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1590710722967" />
+    <state width="1515" height="210" key="GridCell.Tab.0.right" timestamp="1590710722967">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1590710722967" />
+    <state x="431" y="145" key="search.everywhere.popup" timestamp="1590708781531">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1590708781531" />
+=======
       <changelist id="3eb4e5f7-4fae-41f5-9002-fd56f2631aa7" name="Default Changelist" comment="" />
       <created>1590022737403</created>
       <option name="number" value="Default" />
@@ -204,40 +182,36 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Completed Backpropagation" />
     <option name="LAST_COMMIT_MESSAGE" value="Completed Backpropagation" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom" timestamp="1591804230458">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1591804230458" />
-    <state width="1899" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1591771333990" />
-    <state width="1899" height="208" key="GridCell.Tab.0.center" timestamp="1591804230458">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.center/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1591804230458" />
-    <state width="1899" height="208" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1591771333990" />
-    <state width="1899" height="208" key="GridCell.Tab.0.left" timestamp="1591804230458">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.left/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1591804230458" />
-    <state width="1899" height="208" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1591771333989" />
-    <state width="1899" height="208" key="GridCell.Tab.0.right" timestamp="1591804230458">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1590908755212">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="208" key="GridCell.Tab.0.right/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1591804230458" />
-    <state width="1899" height="208" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1591771333990" />
-    <state x="466" y="330" key="SettingsEditor" timestamp="1591768530853">
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590908755212" />
+    <state x="461" y="165" key="SettingsEditor" timestamp="1590903569298">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="466" y="330" key="SettingsEditor/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1591768530853" />
+    <state x="461" y="165" key="SettingsEditor/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590903569298" />
     <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590896122691">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="769" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040/-1600.174.1600.860@0.0.1920.1040" timestamp="1590896122691" />
+>>>>>>> a14c75f26fa94490ea6910d12f9fcbf923868281
   </component>
 </project>
