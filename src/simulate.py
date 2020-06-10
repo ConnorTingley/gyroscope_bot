@@ -117,8 +117,8 @@ class state:
         return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l]
 
     def reset(self):
-        self.angle = np.array([0.,np.random.triangular(.3, .2, .1),0.])
-        self.angle_vel = np.array([.0,0.,0])
+        self.angle = np.array([0.,np.random.triangular(.3, .2, .1),0.,0.])
+        self.angle_vel = np.array([.0,0.,0.,0.])
         self.wheel_l = np.array([0.,0.,0.])
         self.t = 0
 
