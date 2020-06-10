@@ -19,7 +19,7 @@ class state:
     wheel_l = np.zeros(3) #momentum in flywheels
 
     #for backprop
-    t_overshoot = []
+    reward_consts = [10., 4., 0.]
 
 
     events = []
@@ -112,9 +112,10 @@ class state:
 
             self.t += dt
         fractional_L = self.wheel_l / self.satr_l
-        #phi_dot_opt = - self.angle[1] / np.sqrt(self.ag)
-        #reward = - a / np.cos(self.angle[1]) - b * fractional_L[1] ** 2 - c * (self.angle_vel[1] - phi_dot_opt)**2
-        return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l]
+        phi_dot_opt = - self.angle[1] / np.sqrt(self.ag)
+        reward = - self.reward_consts[0] * np.cos(self.angle[1]) - \
+                 self.reward_consts[1] * fractional_L[1] ** 2 - self.reward_consts[2] (self.angle_vel[1] - phi_dot_opt)**2
+        return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l], reward
 
     def reset(self):
         self.angle = np.array([0.,np.random.triangular(.3, .2, .1),0.,0.])
