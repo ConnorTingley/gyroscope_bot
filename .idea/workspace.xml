@@ -20,23 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3eb4e5f7-4fae-41f5-9002-fd56f2631aa7" name="Default Changelist" comment="Completed Backpropagation">
-      <change afterPath="$PROJECT_DIR$/src/cont_actor_critic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/Network Test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/Network_Test_Simple.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/actor_critic.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/actor_critic_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/actor_critic_tf.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/deep_network.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/test.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/old/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Network Test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actor_critic.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/deep_network.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/simulate.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/old/util.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
