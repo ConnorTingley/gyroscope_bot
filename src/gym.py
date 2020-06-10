@@ -31,16 +31,16 @@ class PendulumEnv(gym.Env):
         self.state = self.sim.rough_step(self.dt, [0,0,0], 0)
 
         self.action_space = spaces.Box(
-            low=np.array([-1, -1, -1]),
-            high=np.array([1, 1, 1]),
-            shape=(3,),
+            low=np.array([-1, -1]),
+            high=np.array([1, 1]),
+            shape=(2,),
             dtype=np.float32
         )
-        #Observation Space formatting: [phi, sin(alpha), cos(alpha), facing, d_phi, d_alpha, d_facing, wheel_l1, wheel_l2, wheel_l3]
+        #Observation Space formatting: [phi, sin(theta), cos(theta), d_phi, d_theta, wheel_l1, wheel_l2, wheel_l3]
         self.observation_space = spaces.Box(
-            low=np.array([0, -1., -1., , -self.max_angular_vel, -self.max_angular_vel, -self.max_angular_vel, -1, -1, -1], dtype=np.float32),
-            high=np.array([self.death_pos, 1., 1., , self.max_angular_vel, self.max_angular_vel, self.max_angular_vel, 1, 1, 1], dtype=np.float32),
-            shape=(9,),
+            low=np.array([0, -1., -1., -self.max_angular_vel, -self.max_angular_vel, -1, -1], dtype=np.float32),
+            high=np.array([self.death_pos, 1., 1., self.max_angular_vel, self.max_angular_vel, 1, 1], dtype=np.float32),
+            shape=(8,),
             dtype=np.float32
         )
 
@@ -62,10 +62,10 @@ class PendulumEnv(gym.Env):
 
     def _get_obs(self):
         t, angle, angle_vel, wheel_l = self.state
-        theta, phi, alpha, facing = angle
-        d_theta, d_alpha, d_phi, d_facing = angle_vel
+        theta, phi, alpha = angle
+        d_theta, d_alpha, d_phi = angle_vel
 
-        return np.array([phi, np.sin(alpha), np.cos(alpha), facing, d_phi, d_alpha, d_facing, wheel_l[0], wheel_l[1], wheel_l[2]])
+        return np.array([phi, np.sin(theta), np.cos(theta), d_phi, d_alpha, wheel_l[0], wheel_l[1]])
 
     def render(self, mode='human'):
         if self.viewer is None:
