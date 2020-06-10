@@ -52,7 +52,7 @@ class state:
             transform = np.array([[np.cos(self.angle[2]), -np.sin(self.angle[2]), 0],
                          [np.sin(self.angle[2]), np.cos(self.angle[2]), 0],
                          [0,0,1]])
-            wheel_action = transform.dot(T_action)
+            wheel_action = transform.dot(T_action) * np.array(np.sqrt(2), np.sqrt(2), 1) * self.max_torque
 
             #check bounding on momentum
             upper_torque_lim = self.max_torque * (np.ones(3) - self.wheel_l / self.satr_l)
@@ -85,6 +85,7 @@ class state:
             self.angle_vel[1] +=  a[1] * dt \
                                 + np.sin(2 * self.angle[1]) * self.angle_vel[0] ** 2 * dt / 2
             self.angle_vel[2] += a[2] * dt
+            self.angle_vel = np.clip(-1, self.angle_vel, 1)
 
             #position updates (Precise step: 1st (2nd?) order runge kutta)
             self.angle += self.angle_vel * dt
