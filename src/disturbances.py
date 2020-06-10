@@ -35,7 +35,7 @@ class disturbance:
                 prev_max_time = np.max(durs + 2 * np.divide(fs, js))
                 impulse = fs.dot(durs)
             t += delta_t
-            events.append([t, fs, js, durs])
+            events.append([t, np.array(fs), np.array(js), np.array(durs)])
             impulse = np.inf
         #for i in range(len(events)):
         #    print(i, events[i][0])

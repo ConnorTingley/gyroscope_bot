@@ -51,10 +51,10 @@ class PendulumEnv(gym.Env):
         return [seed]
 
     def step(self, u):
-        self.state = self.sim.rough_step(self.dt, u, self.step_count)
+        self.state = self.sim.rough_step(self.dt, u, self.step_count), reward
 
 
-        return self._get_obs(), -costs, False, {}
+        return self._get_obs(), reward, False, {}
 
     def reset(self):
         self.state = self.sim.reset()
