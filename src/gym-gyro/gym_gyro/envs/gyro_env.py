@@ -209,9 +209,9 @@ class state:
         return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l], reward
 
     def reset(self):
-        self.angle = np.array([0.,np.random.triangular(.1, .2, .3),0.,0.])
-        self.angle_vel = np.array([.0,0.,0.,0.])
-        self.wheel_l = np.array([0.,0.,0.])
+        self.angle = np.array([np.random.uniform(-np.pi,  np.pi), np.random.triangular(.1, .2, .3)])
+        self.angle_vel = np.array([.0,0.])
+        self.wheel_l = np.array([0.,0.])
         self.t = 0
 
         self.event_num = 0
