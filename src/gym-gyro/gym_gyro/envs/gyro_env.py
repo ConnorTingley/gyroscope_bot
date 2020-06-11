@@ -127,6 +127,7 @@ class state:
     ag = 0.
     max_torque = np.zeros(2)
     satr_l = np.zeros(2)
+    length = 0.
 
     #state variables
     t = 0.
@@ -149,6 +150,7 @@ class state:
         self.ag = g * mass / self.I
         self.satr_l = max_flywheel_l
         self.max_torque = max_torque
+        self.length = length
 
         #initial position / velocity
         #self.angle = np.array([0., .2, 0.])
@@ -195,18 +197,25 @@ class state:
                     self.event_end = self.cur_event[0] + max(self.cur_event[3])
 
             #velocity updates
-            self.angle_vel += a * dt
+            new_angle_vel = self.angle_vel + a * dt
+            if new_angle_vel.dot(self.angle_vel) < 0:
+                self.angle[0] = -self.angle[0]
+            self.angle_vel += new_angle_vel
 
             #position updates (Precise step: 1st (2nd?) order runge kutta)
             self.angle[1] += np.linalg.norm(self.angle_vel) * dt
-            self.angle[0] = np.atan2(self.angle_vel[1], self.angle_vel[0])
+            self.angle[0] = np.arctan2(self.angle_vel[1], self.angle_vel[0])
 
             self.t += dt
         fractional_L = self.wheel_l / self.satr_l
         #phi_dot_opt = - self.angle[1] / np.sqrt(self.ag)
         reward = - self.reward_consts[0] * np.cos(self.angle[1]) - \
                  self.reward_consts[1] * fractional_L[1] ** 2 - self.reward_consts[2] * (np.linalg.norm(self.angle_vel))**2
-        return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l], reward
+        x = np.sin(self.angle[0]) * np.sin(self.angle[1])
+        y = np.cos(self.angle[0]) * np.sin(self.angle[1])
+        xdot = np.sin(self.angle[0]) * np.cos(self.angle[1]) * np.linalg.norm(self.angle_vel)
+        ydot = np.cos(self.angle[0]) * np.cos(self.angle[1]) * np.linalg.norm(self.angle_vel)
+        return [self.t, np.array([x, y]), np.array(xdot, ydot), self.wheel_l/ self.satr_l], reward
 
     def reset(self):
         self.angle = np.array([np.random.uniform(-np.pi,  np.pi), np.random.triangular(.1, .2, .3)])
