@@ -14,16 +14,16 @@ class GyroEnv(gym.Env):
     }
 
     def __init__(self):
-        self.dt = .0003
-        self.step_count = 300
-        self.max_angular_vel = 1
-        self.max_torque = 1.
-        self.max_flywheel = 1.
+        self.dt = .01
+        self.step_count = 5
+        self.max_angular_vel = 10
+        self.max_torque = 10.
+        self.max_flywheel = 100.
         self.g = 9.8
         self.mass = 10
         self.length = 1.
         self.L2 = 0.25
-        self.death_pos = np.pi/2
+        self.death_pos = 1 * np.pi/3
         self.viewer = None
 
         self.sim = state(mass=self.mass, length=self.length, g=self.g, L2=self.L2,
@@ -53,6 +53,11 @@ class GyroEnv(gym.Env):
 
     def step(self, u):
         self.state, reward = self.sim.rough_step(self.dt, u, self.step_count)
+        reward /= 100
+        if self.state[1][1] > self.death_pos:
+            reward = -100
+            self.reset()
+
 
         return self._get_obs(), reward, False, {}
 
@@ -64,7 +69,6 @@ class GyroEnv(gym.Env):
         t, angle, angle_vel, wheel_l = self.state
         theta, phi, alpha, facing = angle
         d_theta, d_phi, d_alpha, d_facing = angle_vel
-
         return np.array([phi, np.sin(theta), np.cos(theta), d_phi, d_theta, wheel_l[0], wheel_l[1]])
 
     def render(self, mode='human'):
@@ -73,26 +77,41 @@ class GyroEnv(gym.Env):
             self.viewer = rendering.Viewer(500, 500)
             self.viewer.set_bounds(-2.2, 2.2, -2.2, 2.2)
 
-            rod = rendering.Line((0,0), (0,1))
-            rod.set_color(0., 0., 0.)
+            rod1 = rendering.Line((0,0), (0,1))
+            rod1.set_color(0., 0., 0.)
+            self.pole_transform1 = rendering.Transform()
+            rod1.add_attr(self.pole_transform1)
+            self.viewer.add_geom(rod1)
 
-            self.pole_transform = rendering.Transform()
-            rod.add_attr(self.pole_transform)
-            self.viewer.add_geom(rod)
+            tip1 = rendering.make_circle(.1)
+            tip1.set_color(0.2, 0.2, 0.9)
+            self.tip_transform1 = rendering.Transform()
+            tip1.add_attr(self.tip_transform1)
+            self.viewer.add_geom(tip1)
 
-            tip = rendering.make_circle(.1)
-            tip.set_color(0.2, 0.2, 0.9)
-            self.tip_transform = rendering.Transform()
-            rod.add_attr(self.tip_transform)
-            self.viewer.add_geom(tip)
+            rod2 = rendering.Line((0, 0), (0, 1))
+            rod2.set_color(0., 0., 0.)
+            self.pole_transform2 = rendering.Transform()
+            rod2.add_attr(self.pole_transform2)
+            self.viewer.add_geom(rod2)
+
+            tip2 = rendering.make_circle(.1)
+            tip2.set_color(0.2, 0.2, 0.9)
+            self.tip_transform2 = rendering.Transform()
+            tip2.add_attr(self.tip_transform2)
+            self.viewer.add_geom(tip2)
 
 
         angle = self.state[1]
         radius = np.sin(angle[1])
-        self.pole_transform.set_rotation(angle[0])
-        self.pole_transform.set_scale(1,radius)
+        self.pole_transform1.set_rotation(angle[0] - np.pi / 2)
+        self.pole_transform1.set_scale(1,radius)
+        self.pole_transform1.set_translation(0, 1)
+        self.tip_transform1.set_translation(radius * np.cos(angle[0]), radius * np.sin(angle[0]) + 1)
 
-        self.tip_transform.set_translation(radius * np.cos(angle),radius * np.sin(angle))
+        self.pole_transform2.set_rotation(-angle[1])
+        self.pole_transform2.set_translation(0, -1)
+        self.tip_transform2.set_translation(np.sin(angle[1]), np.cos(angle[1]) - 1)
 
         return self.viewer.render(return_rgb_array=mode == 'rgb_array')
 
@@ -248,11 +267,7 @@ class state:
     def rough_step(self, dt, T_action, count):
         for i in range(count):
             # convert momentum space command to wheel command
-            wheel_action = np.zeros(3)
-            transform = np.array([[np.cos(self.angle[2]), -np.sin(self.angle[2]), 0],
-                         [np.sin(self.angle[2]), np.cos(self.angle[2]), 0],
-                         [0,0,1]])
-            wheel_action = transform.dot(T_action) * np.array([np.sqrt(2), np.sqrt(2), 1]) * self.max_torque
+            wheel_action = np.array([self.max_torque[0] * T_action[0], self.max_torque[1] * T_action[1], 0])
 
             #check bounding on momentum
             upper_torque_lim = self.max_torque * (np.ones(3) - self.wheel_l / self.satr_l)
@@ -261,7 +276,7 @@ class state:
             self.wheel_l += wheel_action_clipped * dt
 
             #compute angular accelerations from wheels
-            applied_T = np.transpose(transform).dot(wheel_action_clipped)
+            applied_T = wheel_action_clipped
             a = applied_T / self.I
             a[1] += self.ag * np.sin(self.angle[1])
 
@@ -317,7 +332,7 @@ class state:
         return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l], reward
 
     def reset(self):
-        self.angle = np.array([0.,np.random.triangular(.1, .2, .3),0.,0.])
+        self.angle = np.array([0.,np.random.triangular(.01, .05, .1),0.,0.])
         self.angle_vel = np.array([.0,0.,0.,0.])
         self.wheel_l = np.array([0.,0.,0.])
         self.t = 0
