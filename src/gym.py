@@ -38,8 +38,8 @@ class PendulumEnv(gym.Env):
         )
         #Observation Space formatting: [phi, sin(alpha), cos(alpha), facing, d_phi, d_alpha, d_facing, wheel_l1, wheel_l2, wheel_l3]
         self.observation_space = spaces.Box(
-            low=np.array([0, -1., -1., , -self.max_angular_vel, -self.max_angular_vel, -self.max_angular_vel, -1, -1, -1], dtype=np.float32),
-            high=np.array([self.death_pos, 1., 1., , self.max_angular_vel, self.max_angular_vel, self.max_angular_vel, 1, 1, 1], dtype=np.float32),
+            low=np.array([0, -1., -1., -self.max_angular_vel, -self.max_angular_vel, -self.max_angular_vel, -1, -1, -1], dtype=np.float32),
+            high=np.array([self.death_pos, 1., 1., self.max_angular_vel, self.max_angular_vel, self.max_angular_vel, 1, 1, 1], dtype=np.float32),
             shape=(9,),
             dtype=np.float32
         )
