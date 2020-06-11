@@ -28,7 +28,7 @@ class GyroEnv(gym.Env):
 
         self.sim = state(mass=self.mass, length=self.length, g=self.g, L2=self.L2,
                     events=[[1, np.array([0, 0]), np.array([1, 1]), np.array([1, 1])]],
-                    max_flywheel_l=np.array([self.max_flywheel, self.max_flywheel, self.max_flywheel]), max_torque=np.array([self.max_torque, self.max_torque, self.max_torque]))
+                    max_flywheel_l=np.array([self.max_flywheel, self.max_flywheel]), max_torque=np.array([self.max_torque, self.max_torque]))
         self.state = self.sim.rough_step(self.dt, [0,0,0], 0)
 
         self.action_space = spaces.Box(
