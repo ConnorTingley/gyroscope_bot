@@ -49,11 +49,7 @@ class state:
     def rough_step(self, dt, T_action, count):
         for i in range(count):
             # convert momentum space command to wheel command
-            wheel_action = np.zeros(3)
-            transform = np.array([[np.cos(self.angle[2]), -np.sin(self.angle[2]), 0],
-                         [np.sin(self.angle[2]), np.cos(self.angle[2]), 0],
-                         [0,0,1]])
-            wheel_action = transform.dot(T_action) * np.array([np.sqrt(2), np.sqrt(2), 1]) * self.max_torque
+            wheel_action = np.array([self.max_torque * T_action[0], self.max_torque * T_action[1], 0])
 
             #check bounding on momentum
             upper_torque_lim = self.max_torque * (np.ones(3) - self.wheel_l / self.satr_l)
@@ -62,7 +58,7 @@ class state:
             self.wheel_l += wheel_action_clipped * dt
 
             #compute angular accelerations from wheels
-            applied_T = np.transpose(transform).dot(wheel_action_clipped)
+            applied_T = wheel_action_clipped
             a = applied_T / self.I
             a[1] += self.ag * np.sin(self.angle[1])
 
@@ -118,7 +114,7 @@ class state:
         return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l], reward
 
     def reset(self):
-        self.angle = np.array([0.,np.random.triangular(.3, .2, .1),0.,0.])
+        self.angle = np.array([0.,np.random.triangular(.1, .2, .3),0.,0.])
         self.angle_vel = np.array([.0,0.,0.,0.])
         self.wheel_l = np.array([0.,0.,0.])
         self.t = 0
