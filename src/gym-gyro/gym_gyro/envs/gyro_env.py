@@ -92,7 +92,7 @@ class GyroEnv(gym.Env):
         self.pole_transform.set_rotation(angle[0])
         self.pole_transform.set_scale(1,radius)
 
-        self.tip_transform.set_translation(radius * np.cos(angle),radius * np.sin(angle))
+        self.tip_transform.set_translation(radius * np.cos(angle[0]),radius * np.sin(angle[0]))
 
         return self.viewer.render(return_rgb_array=mode == 'rgb_array')
 

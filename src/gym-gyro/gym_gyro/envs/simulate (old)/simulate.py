@@ -32,8 +32,8 @@ class state:
         self.max_torque = max_torque
 
         #initial position / velocity
-        #self.angle = np.array([0., .2, 0.])
-        self.angle = np.array([0.,np.random.triangular(.1, .2, .3),0., 0.])
+        self.angle = np.array([0., np.pi/4, 0., 0.])
+        #self.angle = np.array([0.,np.random.triangular(.1, .2, .3),0., 0.])
         self.angle_vel = np.array([.1,0.,0., 0.])
         self.wheel_l = np.array([0.,0.,0.])
         self.t = 0
@@ -50,10 +50,11 @@ class state:
         for i in range(count):
             # convert momentum space command to wheel command
             wheel_action = np.zeros(3)
-            transform = np.array([[np.cos(self.angle[2]), -np.sin(self.angle[2]), 0],
-                         [np.sin(self.angle[2]), np.cos(self.angle[2]), 0],
-                         [0,0,1]])
-            wheel_action = transform.dot(T_action) * np.array([np.sqrt(2), np.sqrt(2), 1]) * self.max_torque
+            #transform = np.array([[np.cos(self.angle[2]), -np.sin(self.angle[2]), 0],
+            #             [np.sin(self.angle[2]), np.cos(self.angle[2]), 0],
+             #            [0,0,1]])
+            #wheel_action = transform.dot(T_action) * np.array([np.sqrt(2), np.sqrt(2), 1]) * self.max_torque
+            wheel_action = np.array([self.max_torque * T_action[0], self.max_torque * T_action[1], 0])
 
             #check bounding on momentum
             upper_torque_lim = self.max_torque * (np.ones(3) - self.wheel_l / self.satr_l)
@@ -97,6 +98,7 @@ class state:
 
             #position updates (Precise step: 1st (2nd?) order runge kutta)
             self.angle += self.angle_vel * dt
+            #self.angle[2] += (self.angle_vel[0] * dt * np.cos(self.angle[1]))
             self.angle[2] = 0
             #if we have crossed over vertical, need to flip some coordinates & velocities
             if self.angle[1] < 0:
@@ -115,10 +117,10 @@ class state:
         phi_dot_opt = - self.angle[1] / np.sqrt(self.ag)
         reward = - self.reward_consts[0] * np.cos(self.angle[1]) - \
                  self.reward_consts[1] * fractional_L[1] ** 2 - self.reward_consts[2] * (self.angle_vel[1] - phi_dot_opt)**2
-        return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l], reward
+        return [self.t, self.angle, self.angle_vel, self.wheel_l/ self.satr_l]#, reward
 
     def reset(self):
-        self.angle = np.array([0.,np.random.triangular(.3, .2, .1),0.,0.])
+        self.angle = np.array([0.,np.random.triangular(.1, .2, .3),0.,0.])
         self.angle_vel = np.array([.0,0.,0.,0.])
         self.wheel_l = np.array([0.,0.,0.])
         self.t = 0

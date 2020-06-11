@@ -11,17 +11,17 @@ def main():
 
     sim = state(mass = 10, length = 1, g=0, L2 = .25, events = [[1, np.array([0,0,0]), np.array([1,1,1]), np.array([1,1,1])]], max_flywheel_l= np.array([1.,1.,1.]), max_torque = np.array([1.,1.,1.]))
     num = 300
-    angles = np.zeros((3, num))
-    angle_vels = np.zeros((3, num))
+    angles = np.zeros((4, num))
+    angle_vels = np.zeros((4, num))
     t = np.zeros(num)
     for i in range(num):
-        new = sim.rough_step(.03, np.array([0,0,0]), 20)
+        new = sim.rough_step(.03, np.array([0,0,0]), 30)
         t[i] = new[0]
         angles[:, i] = new[1]
         angle_vels[:, i] = new[2]
     plt.scatter(t, angle_vels[0,:], label = "theta_dot")
     plt.scatter(t, angle_vels[1, :], label="phi_dot")
-    print(np.max(angles[1,:]))
+    print(np.max(angles[2,:]))
     plt.scatter(t, angles[2,:], label = "alpha")
     plt.scatter(t, angles[1,:], label = "phi")
     plt.xlabel("t")
