@@ -90,13 +90,14 @@ class ACNet(object):
         w_init = tf.random_normal_initializer(0., .1)
         with tf.variable_scope('actor'):
             l_a1 = tf.layers.dense(self.s, 200, tf.nn.relu6, kernel_initializer=w_init, name='la1')
-            l_a2 = tf.layers.dense(l_a1, 200, tf.nn.relu6, kernel_initializer=w_init, name='la2')
+            l_a2 = tf.layers.dense(l_a1, 50, tf.nn.relu6, kernel_initializer=w_init, name='la2')
             mu = tf.layers.dense(l_a2, N_A, tf.nn.tanh, kernel_initializer=w_init, name='mu')  # estimated action value
             sigma = tf.layers.dense(l_a2, N_A, tf.nn.softplus, kernel_initializer=w_init,
                                     name='sigma')  # estimated variance
         with tf.variable_scope('critic'):
-            l_c = tf.layers.dense(self.s, 100, tf.nn.relu6, kernel_initializer=w_init, name='lc')
-            v = tf.layers.dense(l_c, 1, kernel_initializer=w_init, name='v')  # estimated value for state
+            l_c1 = tf.layers.dense(self.s, 200, tf.nn.relu6, kernel_initializer=w_init, name='lc1')
+            l_c2 = tf.layers.dense(l_c1, 50, tf.nn.relu6, kernel_initializer=w_init, name='lc2')
+            v = tf.layers.dense(l_c2, 1, kernel_initializer=w_init, name='v')  # estimated value for state
         a_params = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=scope + '/actor')
         c_params = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES, scope=scope + '/critic')
         return mu, sigma, v, a_params, c_params
