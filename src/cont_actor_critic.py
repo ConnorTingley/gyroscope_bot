@@ -1,4 +1,5 @@
 import gym
+import gym_gyro
 import multiprocessing
 import threading
 import numpy as np
@@ -23,7 +24,7 @@ LR_A = 0.0001  # learning rate for actor
 LR_C = 0.001  # learning rate for critic
 
 # set environment
-GAME = 'Pendulum-v0'
+GAME = 'gyro-v0'
 env = gym.make(GAME)
 env.reset()
 # if RENDER:                 # uncomment if rendering does not work
